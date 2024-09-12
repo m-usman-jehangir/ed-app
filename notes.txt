@@ -7,6 +7,8 @@ Launching Server (From Within Ng App Folder):
 Angular Components:
     The template consists of the HTML, the selector is the custom selector you create for the component, and the style attribute consists of the css for the component.
 
+    Can use templateUrl, and styleUrl instead if you have their separate files.
+
     @Component({
         selector: 'app-root',
         template: `
@@ -66,6 +68,79 @@ Deferring Components:
     You can add a placeholder with defer, so that shows before this content loads
     Syntax: @loading (has 'minimum' and 'after' arguments)
     You can also add a loading block which shows while this content is loading
+
+Optimizing Images
+
+Routing Overview:
+    - Setup apps.routes.ts:
+        import { Routers } from '@angular/router'
+        
+        export const routers: Routes = []
+
+    - Setup apps.config.ts
+
+Defining Routes:
+    export const routers: Routes = [
+        {
+            path: <define_path>,
+            title: <title_of_route>,
+            component: <component_name>, This needs to be imported to the routes file
+        },
+    ]
+
+Use RouterLink for Navigation:
+    In app.component.ts:
+        import { RouterOutlet, RouterLink } from '@angular/router';
+
+    In the app component itself:
+        Add RouterLink in the imports
+        Now you can get rid of href in the anchor tags, and use routerLink instead.
+
+Forms Overview:
+    In the component's file:
+        import { FormsModule } from '@angular/forms';
+
+    Import FormModule in the component itself as well
+
+    In plain HTML for forms when taking an input we use:
+        <input id="id_name" type="type_of_input" />
+
+    With FormsModule:
+        <input id="id_name" type="type_of_input" [(ngModel)]="favoriteFramework" />
+
+    Notice the input tag and its attributes:
+
+        @Component({
+            selector: 'app-user',
+            template: `
+                <p>Username: {{ username }}</p>
+                <p>{{ username }}'s favorite framework: {{ favoriteFramework }}</p>
+                <label for="framework">
+                    Favorite Framework:
+                    <input id="framework" type="text" />
+                </label>
+            `,
+            standalone: true,
+            imports: [],
+        })
+        export class UserComponent {
+            username = 'youngTech';
+            favoriteFramework = '';
+        }
+
+    With ngModel:
+        The code from <label> to </label> is changed to:
+            <label for="framework">
+                Favorite Framework:
+                <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
+            </label>
+
+    What this does is that [(ngModel)]="favoriteFramework" bind the input field with the favoriteFramework variable, and updates that variable in real-time, this works because [()] is used for two-way data binding, property and event binding.
+
+
+
+
+    
 
 
 Angular Template Syntax:
