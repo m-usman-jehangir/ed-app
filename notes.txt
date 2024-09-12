@@ -1,0 +1,5 @@
+Start Angular App:
+    ng new <app-name>
+
+Launching Server (From Within Ng App Folder):
+    ng serve --open
