@@ -59,6 +59,14 @@ Taking Inputs:
 Giving Outputs: (TODO in more detail)
     Decorator: @Output
 
+Deferring Components:
+    Syntax: @defer (has numerous trigger options)
+    Can defer loading components to after the browser becomes idle
+    Syntax: @placeholder (has 'minimum' arguments)
+    You can add a placeholder with defer, so that shows before this content loads
+    Syntax: @loading (has 'minimum' and 'after' arguments)
+    You can also add a loading block which shows while this content is loading
+
 
 Angular Template Syntax:
     @ is special character used to refer to Angular template syntax, such as in the conditional rendering @if example.
