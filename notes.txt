@@ -3,3 +3,62 @@ Start Angular App:
 
 Launching Server (From Within Ng App Folder):
     ng serve --open
+
+Angular Components:
+    The template consists of the HTML, the selector is the custom selector you create for the component, and the style attribute consists of the css for the component.
+
+    @Component({
+        selector: 'app-root',
+        template: `
+            <span>Yes, the server is running</span>
+        `,
+        standalone: true,
+    })
+    export class AppComponent {
+        // add the boolean property here
+    }
+
+Rendering In Template:
+
+    Conditional:
+        Syntax: @if
+            Can also be used with @else
+
+    Loop:
+        Syntax: @for
+            Control flow
+
+Attributes And Property Binding:
+    You can bind attributes and properties in the following way:
+        The contentEditable attribute disables or enables text editing, as you can see to bind it we needed square brackets around it and then we referred to the property.
+
+        import {Component} from '@angular/core';
+
+        @Component({
+            selector: 'app-root',
+            styleUrls: ['app.component.css'],
+            template: `
+                <div [contentEditable]="isEditable"></div>
+            `,
+            standalone: true,
+        })
+            export class AppComponent {
+            isEditable = true;
+        }
+
+Adding Events:
+    Events can be added to components within templates as well, the same ways properties and attributes are bound, except you set the attribute to a function, and the event attribute is enclosed by parentheses, as follows:
+        Here mouseover is the event, and onMouseOver() is the function as a property being exported from the other component, you can define functions without exporting as well.
+
+        <section (mouseover)="onMouseOver()">
+
+Taking Inputs:
+    Decorator: @Input
+    Communicating with @Input
+
+Giving Outputs: (TODO in more detail)
+    Decorator: @Output
+
+
+Angular Template Syntax:
+    @ is special character used to refer to Angular template syntax, such as in the conditional rendering @if example.
