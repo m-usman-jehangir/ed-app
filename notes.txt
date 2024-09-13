@@ -137,11 +137,55 @@ Forms Overview:
 
     What this does is that [(ngModel)]="favoriteFramework" bind the input field with the favoriteFramework variable, and updates that variable in real-time, this works because [()] is used for two-way data binding, property and event binding.
 
+Getting Form Control Value
 
+Reactive Forms:
+    in the component file import:
+        import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms'
 
+    then in the component itself add the imported module to its imports as well.
 
+    Original template:
+
+        <form>
+            <label>
+                Name
+                <input type="text" formControlName="name" />
+            </label>
+            <label>
+                Email
+                <input type="email" formControlName="email" />
+            </label>
+            <button type="submit">Submit</button>
+        </form>   
+
+    Now you can declare the form as follows:
+        
+        export class AppComponent {
+            profileForm = new FormGroup({
+                name: new FormControl(''),
+                email: new FormControl(''),
+            });
+        }
+
+    and then link these to the template as follows:
+        
+        <form [formGroup]="profileForm">
+            <label>
+                Name
+                <input type="text" formControlName="name" />
+            </label>
+            <label>
+                Email
+                <input type="email" formControlName="email" />
+            </label>
+            <button type="submit">Submit</button>
+        </form>
     
-
+    The data can then be accessed as follows:
+        <h2>Profile Form</h2>
+        <p>Name: {{ profileForm.value.name }}</p>
+        <p>Email: {{ profileForm.value.email }}</p>
 
 Angular Template Syntax:
     @ is special character used to refer to Angular template syntax, such as in the conditional rendering @if example.
